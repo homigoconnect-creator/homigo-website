@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HomigoLandingPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans">
@@ -5,9 +7,13 @@ export default function HomigoLandingPage() {
       <header className="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-orange-400 flex items-center justify-center shadow-md">
-              <span className="text-white text-2xl font-bold">H</span>
-            </div>
+            <Image
+              src="/homigo_logo.png"
+              alt="Homigo logo"
+              width={44}
+              height={44}
+              className="w-11 h-11 rounded-2xl object-cover shadow-md"
+            />
             <div>
               <h1 className="text-2xl font-bold tracking-wide">HOMIGO</h1>
               <p className="text-sm text-slate-500">Better Services. Better Homes.</p>
@@ -44,7 +50,7 @@ export default function HomigoLandingPage() {
             </h1>
 
             <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
-              Verified maids, electricians, plumbers, and home care professionals — all managed through a trusted and reliable platform.
+              Verified maids, electricians, plumbers, and home care professionals &mdash; all managed through a trusted and reliable platform.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -105,7 +111,7 @@ export default function HomigoLandingPage() {
               Services Built for Everyday Needs
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              From daily home support to skilled professionals and care services — Homigo connects you with trusted service providers.
+              From daily home support to skilled professionals and care services &mdash; Homigo connects you with trusted service providers.
             </p>
           </div>
 
@@ -209,7 +215,7 @@ export default function HomigoLandingPage() {
       <section id="contact" className="py-24 bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
           <div>
-            <h2 className="text-4xl font-bold mb-6">Let’s Build Better Homes Together</h2>
+            <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Better Homes Together</h2>
             <p className="text-slate-300 text-lg leading-relaxed max-w-xl">
               Homigo is focused on creating trusted home service experiences in Kozhikode through verified professionals and strong local operations.
             </p>
@@ -241,7 +247,7 @@ export default function HomigoLandingPage() {
 
       {/* Footer */}
       <footer className="bg-black text-slate-400 text-center py-6 text-sm">
-        © 2026 Homigo. Better Services. Better Homes.
+        &copy; 2026 Homigo. Better Services. Better Homes.
       </footer>
     </div>
   );

@@ -8,7 +8,7 @@ export default function HomigoLandingPage() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
-              src="/homigo_logo.png"
+              src="/homigo_logo.PNG"
               alt="Homigo logo"
               width={44}
               height={44}

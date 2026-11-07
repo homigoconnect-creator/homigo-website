@@ -1,412 +1,172 @@
 import Image from "next/image";
 
 const services = [
-  {
-    title: "House Maids",
-    desc: "Reliable and verified home support professionals.",
-    icon: "🧹",
-  },
-  {
-    title: "Electricians",
-    desc: "Experienced professionals for safe electrical work.",
-    icon: "⚡",
-  },
-  {
-    title: "Plumbers",
-    desc: "Quick and dependable plumbing solutions.",
-    icon: "🔧",
-  },
-  {
-    title: "Care Services",
-    desc: "Compassionate caregivers for home support.",
-    icon: "❤️",
-  },
-];
-
-const promises = [
-  "Fair opportunities",
-  "Timely payments",
-  "Respect and recognition",
-  "Support when you need it",
-  "Growth and long-term partnership",
+  { title: "House maids", copy: "Dependable everyday help from verified local professionals.", icon: "broom" },
+  { title: "Plumbing", copy: "Prompt support for repairs, fittings and water-related issues.", icon: "tap" },
+  { title: "Electrical", copy: "Skilled help for safer installations, repairs and maintenance.", icon: "bolt" },
+  { title: "Drivers", copy: "Reliable local drivers for everyday travel and family commitments.", icon: "car" },
+  { title: "Babysitting", copy: "Attentive in-home support for children and busy families.", icon: "heart" },
+  { title: "Elderly care", copy: "Respectful companionship and practical support for older adults.", icon: "care" },
+  { title: "Maternity care", copy: "Considerate at-home assistance for mothers and newborn routines.", icon: "mother" },
+  { title: "Home nursing", copy: "Qualified care support arranged for recovery and daily health needs.", icon: "medical" },
 ];
 
 const partnerBenefits = [
-  {
-    title: "More Work Opportunities",
-    desc: "Get regular jobs in your area based on your skills.",
-  },
-  {
-    title: "Timely & Secure Payments",
-    desc: "Transparent payments, on time, every time.",
-  },
-  {
-    title: "Build Your Reputation",
-    desc: "Good ratings bring you more work and happy customers.",
-  },
-  {
-    title: "We've Got Your Back",
-    desc: "Our support team is always ready to help you.",
-  },
-  {
-    title: "Grow with HOMIGO",
-    desc: "Opportunities to learn, grow, and earn more.",
-  },
+  "Regular opportunities near you",
+  "Timely, transparent payments",
+  "Recognition for quality work",
+  "A local team ready to support you",
 ];
 
-const howItWorks = [
-  {
-    title: "Register",
-    desc: "We collect your details and verify your documents.",
-  },
-  {
-    title: "Get Verified",
-    desc: "Once verified, your profile is activated on the platform.",
-  },
-  {
-    title: "Receive Jobs",
-    desc: "Get job requests based on your skills and availability.",
-  },
-  {
-    title: "Complete & Earn",
-    desc: "Do your best work and get paid on time.",
-  },
-  {
-    title: "Grow Together",
-    desc: "Build your ratings and grow your business with HOMIGO.",
-  },
-];
-
-export default function HomigoLandingPage() {
+function Arrow() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
-      {/* Header */}
-      <header className="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/homigo_logo.PNG"
-              alt="Homigo logo"
-              width={44}
-              height={44}
-              className="w-11 h-11 rounded-2xl object-cover shadow-md"
-            />
-            <div>
-              <h1 className="text-2xl font-bold tracking-wide">HOMIGO</h1>
-              <p className="text-sm text-slate-500">Better Services. Better Homes.</p>
-            </div>
-          </div>
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+      <path d="M3.5 10h12M11 5.5l4.5 4.5-4.5 4.5" />
+    </svg>
+  );
+}
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#services" className="hover:text-orange-500 transition">Services</a>
-            <a href="#why" className="hover:text-orange-500 transition">Why HOMIGO</a>
-            <a href="#partners" className="hover:text-orange-500 transition">Partners</a>
-            <a href="#contact" className="hover:text-orange-500 transition">Contact</a>
-          </nav>
+function ServiceIcon({ name }: { name: string }) {
+  const props = { viewBox: "0 0 24 24", width: 28, height: 28, "aria-hidden": true };
+  if (name === "tap") return <svg {...props}><path d="M4 9h12a4 4 0 0 1 4 4v1M8 9V6h6M11 6V3M8 3h6M17 18s-2 2.2-2 3.4a2 2 0 0 0 4 0C19 20.2 17 18 17 18Z" /></svg>;
+  if (name === "bolt") return <svg {...props}><path d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z" /></svg>;
+  if (name === "heart") return <svg {...props}><path d="M20.8 4.7a5.4 5.4 0 0 0-7.7 0L12 5.8l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.7Z" /></svg>;
+  if (name === "car") return <svg {...props}><path d="m5 16-1 2v2h2l1-2h10l1 2h2v-2l-1-2-2-7H7l-2 7Z" /><path d="M6 14h12M8 17h.01M16 17h.01" /></svg>;
+  if (name === "care") return <svg {...props}><circle cx="12" cy="7" r="3" /><path d="M6 21v-3a6 6 0 0 1 12 0v3M3 13l3 2M21 13l-3 2" /></svg>;
+  if (name === "mother") return <svg {...props}><path d="M9 5a3 3 0 1 0 6 0M7 21v-6a5 5 0 0 1 10 0v6M9 16c2.2 1.6 3.8 1.6 6 0" /><circle cx="12" cy="13" r="1.5" /></svg>;
+  if (name === "medical") return <svg {...props}><path d="M9 3h6v5h5v6h-5v7H9v-7H4V8h5V3Z" /></svg>;
+  return <svg {...props}><path d="m4 20 7.2-7.2M9 15l-3-3 8.5-8.5M4 20h5l4-4-5-5-4 4v5Z" /></svg>;
+}
 
-          <button className="bg-slate-900 hover:bg-black text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-md transition">
-            Book Now
-          </button>
-        </div>
+function ComingSoonButton({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className="coming-wrap">
+      <strong className="coming-tag">Coming soon · Dec 2026</strong>
+      <span className={`button coming-button${compact ? " button-small" : ""}`} aria-disabled="true">Book a service</span>
+    </span>
+  );
+}
+
+export default function Home() {
+  return (
+    <main>
+      <header className="nav-shell">
+        <a className="brand" href="#top" aria-label="Homigo home">
+          <Image src="/homigo-logo-horizontal.svg" alt="Homigo" width={184} height={40} priority />
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#promise">Why Homigo</a>
+          <a href="#partners">For partners</a>
+        </nav>
+        <ComingSoonButton compact />
       </header>
+      <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#services">Services</a><a href="#partners">For partners</a><a href="#contact">Contact</a></nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_orange,_transparent_40%)]" />
-
-        <div className="max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-16 items-center relative z-10">
-          <div>
-            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-400/20 text-orange-300 px-4 py-2 rounded-full text-sm mb-6">
-              Trusted Local Home Services in Kozhikode
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-              Trusted Home
-              <span className="text-orange-400"> Services </span>
-              Delivered Right.
-            </h1>
-
-            <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
-              Verified maids, electricians, plumbers, and home care professionals &mdash; all managed through a trusted and reliable platform.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 rounded-2xl font-semibold shadow-xl transition">
-                Book a Service
-              </button>
-
-              <button className="border border-slate-500 hover:border-orange-400 hover:text-orange-300 px-7 py-4 rounded-2xl font-semibold transition">
-                Become a Partner
-              </button>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-300">
-              <div>✓ Verified Professionals</div>
-              <div>✓ OTP-Based Service</div>
-              <div>✓ Trusted Support</div>
-            </div>
+      <section className="hero" id="top">
+        <div className="hero-copy">
+          <p className="eyebrow"><span /> Home services, handled with care</p>
+          <h1>Help at home.<br /><em>Without the runaround.</em></h1>
+          <p className="lede">Homigo connects Kozhikode homes with verified maids, electricians, plumbers and care professionals—backed by a team close to home.</p>
+          <div className="hero-actions">
+            <ComingSoonButton />
+            <a className="quiet-link" href="#partners">Join as a professional <Arrow /></a>
           </div>
+          <div className="trust-list">
+            <span>Verified people</span><span>Clear process</span><span>Local support</span>
+          </div>
+        </div>
 
-          <div className="relative">
-            <div className="bg-white rounded-[2rem] p-8 shadow-2xl text-slate-900">
-              <div className="grid grid-cols-2 gap-5">
-                {services.map((service) => (
-                  <div
-                    key={service.title}
-                    className="bg-slate-50 hover:bg-orange-50 border border-slate-100 rounded-2xl p-6 text-center transition shadow-sm"
-                  >
-                    <div className="text-4xl mb-3">{service.icon}</div>
-                    <h3 className="font-semibold text-lg">{service.title}</h3>
-                  </div>
-                ))}
-              </div>
+        <div className="hero-art app-showcase">
+          <Image src="/homigo-app-preview.png" alt="Preview of the Homigo mobile app showing its service categories and booking experience" fill priority sizes="(max-width: 940px) 100vw, 48vw" />
+        </div>
+      </section>
 
-              <div className="mt-8 bg-orange-50 border border-orange-100 rounded-2xl p-5">
-                <p className="font-semibold text-lg mb-2">Why Families Choose HOMIGO</p>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Reliable professionals, transparent process, and support when you need it.
-                </p>
-              </div>
-            </div>
+      <section className="services section" id="services">
+        <div className="section-intro">
+          <div><p className="eyebrow">Everyday help, thoughtfully arranged</p><h2>One trusted place for the people your home needs.</h2></div>
+          <p>Tell us what needs doing. We&apos;ll help connect you with the right professional and support the service from request to completion.</p>
+        </div>
+        <div className="service-grid">
+          {services.map((service, index) => (
+            <article className="service-card" key={service.title}>
+              <span className="card-number">0{index + 1}</span>
+              <div className="service-icon"><ServiceIcon name={service.icon} /></div>
+              <h3>{service.title}</h3><p>{service.copy}</p>
+              <span className="service-status">Available from Dec 2026</span>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="promise" id="promise">
+        <div className="promise-visual">
+          <Image src="/homigo-male-service-professionals.png" alt="Three Homigo home-service professionals outside a Kerala home" fill sizes="(max-width: 940px) 100vw, 50vw" />
+          <p>Skilled people.<br />Backed by Homigo.</p>
+        </div>
+        <div className="promise-copy">
+          <p className="eyebrow">The Homigo promise</p>
+          <h2>Trust is not a feature.<br />It is the foundation.</h2>
+          <p className="promise-lede">Homigo brings structure, accountability and a human touch to finding help at home.</p>
+          <div className="promise-points">
+            <article><span>01</span><div><h3>People you can welcome in</h3><p>Professionals are verified before joining the Homigo network.</p></div></article>
+            <article><span>02</span><div><h3>A journey you can follow</h3><p>Clear communication and OTP-based service validation.</p></div></article>
+            <article><span>03</span><div><h3>Support that stays nearby</h3><p>A local operations team in Kozhikode, ready when needed.</p></div></article>
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-orange-500 font-semibold uppercase tracking-widest mb-3">
-              Our Services
-            </p>
-            <h2 className="text-4xl font-bold mb-4">
-              Services Built for Everyday Needs
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              From daily home support to skilled professionals and care services &mdash; HOMIGO connects you with trusted service providers.
-            </p>
-          </div>
+      <section className="interest section" id="interest">
+        <div className="interest-copy">
+          <p className="eyebrow">Be first in line</p>
+          <h2>Tell us what your home may need.</h2>
+          <p>Bookings begin in December 2026. Send a short enquiry now and the Homigo team can contact you closer to launch.</p>
+          <div className="evidence-row"><span><b>01</b> Professional verification</span><span><b>02</b> OTP service validation</span><span><b>03</b> Kozhikode-based support</span></div>
+        </div>
+        <form className="request-form" action="mailto:homigo.connect@gmail.com" method="post" encType="text/plain">
+          <div><label htmlFor="name">Your name</label><input id="name" name="Name" autoComplete="name" required placeholder="Enter your name" /></div>
+          <div><label htmlFor="phone">Phone number</label><input id="phone" name="Phone" type="tel" autoComplete="tel" required placeholder="+91" /></div>
+          <div><label htmlFor="service">Service needed</label><select id="service" name="Service" defaultValue=""><option value="" disabled>Select a service</option>{services.map((service) => <option key={service.title}>{service.title}</option>)}</select></div>
+          <button className="button" type="submit">Request a callback <Arrow /></button>
+          <small>This opens your email app with the enquiry details.</small>
+        </form>
+      </section>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            {services.map((service) => (
-              <div
-                key={service.title}
-                className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition"
-              >
-                <div className="text-5xl mb-5">{service.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-              </div>
-            ))}
-          </div>
+      <section className="process section">
+        <div className="center-title"><p className="eyebrow">Refreshingly straightforward</p><h2>From request to resolved.</h2></div>
+        <div className="process-grid">
+          <article><span>01</span><i /><h3>Share your need</h3><p>Choose a service and tell us a time that works for your home.</p></article>
+          <article><span>02</span><i /><h3>Meet your professional</h3><p>We connect you with a verified local professional suited to the job.</p></article>
+          <article><span>03</span><i /><h3>Get it taken care of</h3><p>Validate the visit, complete the service and reach us whenever you need help.</p></article>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="rounded-3xl border border-slate-100 bg-slate-50 p-8 shadow-sm">
-              <p className="text-orange-500 font-semibold uppercase tracking-widest mb-3">
-                Our Mission
-              </p>
-              <h2 className="text-3xl font-bold leading-tight">
-                To connect skilled service professionals with homes that need them.
-              </h2>
-              <p className="text-slate-600 leading-relaxed mt-5">
-                We do it through trust, technology, and strong relationships.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-orange-100 bg-orange-50 p-8 shadow-sm">
-              <p className="text-orange-500 font-semibold uppercase tracking-widest mb-3">
-                Our Vision
-              </p>
-              <h2 className="text-3xl font-bold leading-tight">
-                To become the most trusted service platform in every home and every community.
-              </h2>
-            </div>
-          </div>
-
-          <div className="bg-slate-900 text-white rounded-[2rem] p-10 text-center shadow-2xl">
-            <p className="text-orange-300 font-semibold uppercase tracking-widest mb-4">
-              Homigo
-            </p>
-            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
-              Your Skills. Our Platform. Better Tomorrow.
-            </h2>
-            <p className="text-slate-300 text-lg leading-relaxed mt-5 max-w-2xl mx-auto">
-              Join HOMIGO and grow your business with trust and pride.
-            </p>
-            <p className="text-orange-300 font-semibold mt-8">
-              Verified. Trusted. Respected. That&apos;s the HOMIGO Promise.
-            </p>
-          </div>
+      <section className="partners" id="partners">
+        <div className="partner-copy">
+          <p className="eyebrow light">For service professionals</p>
+          <h2>Build your name.<br />Grow your work.</h2>
+          <p>Homigo values the people behind every good service. Join a local platform designed to help your skill earn trust, recognition and regular opportunities.</p>
+          <a className="button button-cream" href="mailto:homigo.connect@gmail.com?subject=Homigo%20service%20partner">Become a partner <Arrow /></a>
+        </div>
+        <div className="benefit-panel">
+          <p className="panel-label">What you can expect</p>
+          {partnerBenefits.map((benefit, index) => <div key={benefit}><span>0{index + 1}</span><strong>{benefit}</strong><b>✓</b></div>)}
         </div>
       </section>
 
-      {/* Why HOMIGO */}
-      <section id="why" className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-orange-500 font-semibold uppercase tracking-widest mb-3">
-              Why HOMIGO
-            </p>
-
-            <h2 className="text-4xl font-bold mb-6 leading-tight">
-              More Than a Marketplace.
-              <br />
-              A Trusted Service Network.
-            </h2>
-
-            <div className="space-y-5 text-slate-700 text-lg">
-              <div>✓ Verified & trusted professionals</div>
-              <div>✓ OTP-based service validation</div>
-              <div>✓ Transparent pricing system</div>
-              <div>✓ Dedicated customer support</div>
-              <div>✓ Local operations team in Kozhikode</div>
-            </div>
-          </div>
-
-          <div className="bg-slate-900 text-white rounded-[2rem] p-10 shadow-2xl">
-            <h3 className="text-3xl font-bold mb-6">Your Safety Matters</h3>
-
-            <div className="space-y-6 text-slate-300 leading-relaxed">
-              <p>
-                Every provider is verified before onboarding.
-              </p>
-
-              <p>
-                We ensure structured service delivery and customer support throughout the process.
-              </p>
-
-              <p>
-                HOMIGO focuses on building long-term trust between households and professionals.
-              </p>
-            </div>
-          </div>
-        </div>
+      <section className="cta section" id="contact">
+        <p className="eyebrow">Launching December 2026</p>
+        <h2>Better help at home<br /><em>is on its way.</em></h2>
+        <p>Bookings open in December. Until then, our local team is available for enquiries and partner onboarding.</p>
+        <div><ComingSoonButton /><a className="quiet-link" href="mailto:homigo.connect@gmail.com">Talk to the Homigo team <Arrow /></a></div>
       </section>
 
-      {/* Partner Section */}
-      <section id="partners" className="py-24 bg-gradient-to-r from-orange-500 to-orange-400 text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-orange-50 font-semibold uppercase tracking-widest mb-4">
-              Proud Professionals. Trusted by Homes. Valued by Homigo.
-            </p>
-            <h2 className="text-5xl font-extrabold mb-6">
-              Become a HOMIGO Service Partner
-            </h2>
-            <p className="text-xl leading-relaxed text-orange-50">
-              Get regular work opportunities, build your reputation, and grow your business with a trusted local platform.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="bg-white text-slate-900 rounded-3xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6">Our Promise To You</h3>
-              <div className="space-y-4">
-                {promises.map((promise) => (
-                  <p key={promise} className="flex gap-3 text-slate-700">
-                    <span className="text-orange-500 font-bold">✓</span>
-                    <span>{promise}</span>
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white/10 border border-white/20 rounded-3xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6">Why Partner With HOMIGO?</h3>
-              <div className="space-y-5">
-                {partnerBenefits.map((benefit) => (
-                  <div key={benefit.title}>
-                    <p className="font-bold text-lg">{benefit.title}</p>
-                    <p className="text-orange-50 leading-relaxed">{benefit.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-slate-900 rounded-3xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6">How It Works</h3>
-              <div className="space-y-5">
-                {howItWorks.map((step, index) => (
-                  <div key={step.title} className="flex gap-4">
-                    <div className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center font-bold shrink-0">
-                      {index + 1}
-                    </div>
-                    <div>
-                      <p className="font-bold uppercase tracking-wide">{step.title}</p>
-                      <p className="text-slate-300 leading-relaxed">{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5 mt-10 text-center">
-            <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
-              We respect your time and your work.
-            </div>
-            <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
-              We believe in long-term relationships.
-            </div>
-            <div className="bg-white/10 border border-white/20 rounded-2xl p-5">
-              We celebrate your hard work and success.
-            </div>
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="text-xl font-semibold mb-6">
-              We ensure a safe and trustworthy environment for everyone.
-            </p>
-            <button className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-4 rounded-2xl font-bold shadow-xl transition">
-              Join Now
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="py-24 bg-slate-950 text-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Better Homes Together</h2>
-            <p className="text-slate-300 text-lg leading-relaxed max-w-xl">
-              HOMIGO is focused on creating trusted home service experiences in Kozhikode through verified professionals and strong local operations.
-            </p>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-5 shadow-xl">
-            <div>
-              <p className="text-slate-400 text-sm">Phone</p>
-              <p className="text-xl font-semibold">+91 9567304092</p>
-            </div>
-
-            <div>
-              <p className="text-slate-400 text-sm">Email</p>
-              <p className="text-xl font-semibold">homigo.connect@gmail.com</p>
-            </div>
-
-            <div>
-              <p className="text-slate-400 text-sm">Website</p>
-              <p className="text-xl font-semibold">www.homigoservice.com</p>
-            </div>
-
-            <div>
-              <p className="text-slate-400 text-sm">Location</p>
-              <p className="text-xl font-semibold">Kozhikode, Kerala</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-black text-slate-400 text-center py-6 text-sm">
-        &copy; 2026 Homigo. Better Services. Better Homes.
+      <footer>
+        <div className="footer-brand"><Image src="/homigo-logo-horizontal.svg" alt="Homigo" width={174} height={38} /><p>Trusted home services, rooted in Kozhikode. Launching December 2026.</p></div>
+        <div className="footer-column"><strong>Explore</strong><a href="#services">Services</a><a href="#promise">Why Homigo</a><a href="#partners">For partners</a></div>
+        <div className="footer-column"><strong>Contact</strong><a href="tel:+919567304092">+91 95673 04092</a><a href="mailto:homigo.connect@gmail.com">homigo.connect@gmail.com</a><span>Kozhikode, Kerala</span></div>
+        <small>© 2026 Homigo. Better services. Better homes.</small>
       </footer>
-    </div>
+    </main>
   );
 }

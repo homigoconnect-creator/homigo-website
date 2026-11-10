@@ -52,9 +52,9 @@ export default function Home() {
       </section>
 
       <section className="process-section" id="process">
-        <div className="section-heading inverse"><p className="kicker">Planned process</p><h2>How Homigo will work.</h2><p>This is the intended launch workflow. It is not a claim that every part is operational today.</p></div>
+        <div className="section-heading inverse"><p className="kicker">Planned process</p><h2>How Homigo will work.</h2><p>The intended workflow for requesting and completing a service through Homigo.</p></div>
         <div className="process-list">{plannedSteps.map(([number, title, description]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div>
-        <div className="verification-note"><strong>About professional checks</strong><p>Homigo is still finalising its onboarding and verification policy. We will publish the exact checks before bookings open; we do not currently claim completed background or police verification.</p></div>
+        <div className="verification-note"><strong>About professional checks</strong><p>Homigo is finalising its professional onboarding and verification policy. The complete process will be published before bookings open.</p></div>
       </section>
 
       <section className="waitlist-section" id="waitlist">
